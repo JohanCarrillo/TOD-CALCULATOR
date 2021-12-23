@@ -1,0 +1,94 @@
+body {
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16vh 32vh;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 8px;
+  border: solid 2px darkblue;
+  align-items: center;
+  justify-content: center;
+  background-color: grey;
+}
+
+#copyright {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: start;
+  padding-bottom: 16px;
+  width: 100%;
+  color: orange;
+}
+
+img {
+  height: 40px;
+  width: auto;
+  text-align: start;
+}
+
+#display {
+  height: 64px;
+  width: 300px;
+  padding: 4px;
+  border: black solid 2px;
+  background-color: darkgrey;
+  text-align: end;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#upper {
+  height: 35%;
+  flex: 1 2 auto;
+  font-size: 18px;
+}
+
+#lower {
+  height: 65%;
+  font-weight: bold;
+  font-size: 32px;
+  padding: 2px;
+  flex: 2 1 auto;
+}
+
+#buttons {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.block {
+  padding: 8px;
+  width: fit-content;
+  flex: 1 1 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 5px;
+}
+
+button {
+  width: 64px;
+  height: 55px;
+  padding: 8px;
+  text-align: center;
+  border: solid 2px black;
+  box-shadow: 1px 1px 1px black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.number {
+  background-color: white;
+}
+
+.operator {
+  background-color: orangered;
+}
