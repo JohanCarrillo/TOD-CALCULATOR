@@ -36,13 +36,18 @@ function calculate(historyArray, classArray) {
     if (classArray[i] === 'number') {
       numberString += historyArray[i];
     } else {  // when it finds an operator
-      if (numberString !== '') numbers.push(Number(numberString));  // save the number
+      if (numberString !== '') {
+        numbers.push(Number(numberString));  // save the number
+      } else {
+        return 'Invalid Operation';
+      }
       numberString = '';  // empty the string
       operators.push(historyArray[i]);  // save the operator
     }
   }
   if (numberString !== '') numbers.push(Number(numberString));  // save last number
   // until here it saves numbers and operators in separate list
+  
 
   if (operators.length !== 0) {
     let number1 = numbers[0];
@@ -50,9 +55,13 @@ function calculate(historyArray, classArray) {
       result = operate(operators[j], number1, numbers[j+1]);
       number1 = result;
     }
-  } else return (Math.round(numbers.join('') * 100) / 100).toFixed(5);
+  } else {  // when there was noot any operator, only one number
+    if (!isNaN(numbers[0])) return (Math.round(numbers.join('') * 100) / 100).toFixed(5);  // invalid number
+    else return 'Invalid Operation';
+  }
   
-  return (Math.round(result * 100) / 100).toFixed(5);
+  if (!isNaN(result)) return (Math.round(result * 100) / 100).toFixed(5);
+  else return 'Invalid Operation';
 }
 
 function clear() {
@@ -79,8 +88,8 @@ buttons.forEach(element => element.addEventListener('click', () => {
       }
       result = calculate(historyArray, classArray);
       // error when dividing by zero
-      if (result === 'Infinity') {  
-        window.alert('can\'t divide by zero');
+      if (result === 'Infinity' || result === 'Invalid Operation') {  
+        window.alert('Invalid Operation');
         clear();
         break;
       }
@@ -96,7 +105,7 @@ buttons.forEach(element => element.addEventListener('click', () => {
       classArray.pop();
       displayUp(historyArray);
       break;
-      
+
     default:  // save numbers and operators
       historyArray.push(element.textContent);
       classArray.push(element.className);
